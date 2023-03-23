@@ -191,9 +191,6 @@ if geogrid_treat:
             ε_interp = pd.DataFrame(np.linspace(df[ε_col].head(1), df[ε_col].tail(1), num=N_POINTS),
                                     columns=['ε ' + str(spc + 1)])
 
-            # ε_interp.loc[0.11] = 0.01
-            # ε_interp.loc[0.12] = 0.1
-            # ε_interp = ε_interp.sort_index().reset_index(drop=True)
 
             # create the σ image of specimen i
             σ_interp = pd.DataFrame(σ_f(ε_interp),
@@ -223,10 +220,6 @@ if geogrid_treat:
         # create median ε
         df_itp_med_2 = pd.DataFrame()
         ε_itp_med = pd.DataFrame(np.linspace(0, ε_med, num=N_POINTS), columns=['ε median'])
-
-        ε_itp_med.loc[0.11] = 0.01
-        ε_itp_med.loc[0.12] = 0.1
-        ε_itp_med = ε_itp_med.sort_index().reset_index(drop=True)
 
         # evaluate median σ
         for i in range(len(σ_f_list)):
